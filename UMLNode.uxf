@@ -96,11 +96,36 @@ constructors and methods
     <id>Relation</id>
     <coordinates>
       <x>370</x>
-      <y>340</y>
+      <y>380</y>
       <w>110</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>490</y>
+      <w>340</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Model::CTECList&lt;Type&gt;
+--
+-size : int
+-head : ArrayNode&lt;Type&gt;
+-end : ArrayNode&lt;Type&gt;
+--
++CTECList() : constructor
++~CTECList() : desctructor
++getSize() : int
++addToFront(const Type&amp; value) : void
++addAtIndex(int index, const Type&amp; value) : void
++getFont
++CTECList() : constructor
++CTECList() : constructor
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
