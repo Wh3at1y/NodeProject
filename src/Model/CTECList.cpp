@@ -1,5 +1,5 @@
 #include "CTECList.h"
-
+#include <assert.h>
 template<class Type>
 CTECList<Type>::CTECList()
 {
@@ -34,7 +34,38 @@ Type CTECList<Type> :: removeFromFront()
 template<class Type>
 Type CTECList<Type> :: removeFromEnd()
 {
-
+	/**
+	 * Check size is valid
+	 * create a return variable
+	 * loop until the next to last Node
+	 * grab the value from the last node
+	 * delete the last node
+	 * set new last node as the end
+	 */
+	assert(size>0);
+	Type returnValue;
+	if(size == 1)
+	{
+		ArrayNode<Type> * toRemove = end;
+		returnValue = removeFromFront();
+		end = nullptr;
+		head = nullptr;
+		delete toRemove;
+	}
+	else
+	{
+		ArrayNode<Type> * current = head;
+		for(int index = 0; index < size - 1; index++)
+		{
+			current = current->getNext();
+		}
+		returnValue = end->getValue();
+		delete end;
+		current = end;
+		current->setNext(nullptr);
+	}
+	calculateSize();
+	return returnValue;
 }
 
 template<class Type>
