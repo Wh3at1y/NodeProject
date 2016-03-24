@@ -10,6 +10,7 @@
 #include <string>
 #include "../Model/Node.cpp"
 #include "../Model/CTECArray.cpp"
+#include "../Model/CTECList.cpp"
 #include "../Model/ArrayNode.cpp"
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
 	NodeController();
 	virtual ~NodeController();
 	void start();
+	void testLists();
 };
 
 #endif /* CONTROLLER_NODECONTROLLER_H_ */
