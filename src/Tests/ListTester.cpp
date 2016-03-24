@@ -5,7 +5,6 @@
 #include "ListTester.h"
 using namespace std;
 
-
 ListTester::ListTester()
 {
 	cout << "Tester Loaded" << endl;
@@ -290,3 +289,4 @@ void ListTester::testSize()
 	}
 	tearDown();
 }
+

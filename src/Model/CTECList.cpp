@@ -1,5 +1,6 @@
 #include "CTECList.h"
 #include <assert.h>
+#include "../Controller/NodeController.h"
 template<class Type>
 CTECList<Type>::CTECList()
 {
@@ -118,3 +119,4 @@ template<class Type>
 			size = count;
 		}
 }
+

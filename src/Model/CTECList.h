@@ -23,6 +23,7 @@ public:
 	void addToFront(const Type& value);
 	void addToEnd(const Type& value);
 	void addAtIndex(int index, const Type& value);
+	void testLists();
 
 	Type getFront();
 	Type getEnd();

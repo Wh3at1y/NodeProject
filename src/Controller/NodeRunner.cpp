@@ -6,7 +6,6 @@
  */
 
 #include "NodeController.h"
-
 int main()
 {
 	NodeController * baseController = new NodeController();
