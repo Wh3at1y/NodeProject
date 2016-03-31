@@ -1,12 +1,19 @@
 #include "CTECList.h"
 #include <assert.h>
-#include "../Controller/NodeController.h"
+
 template<class Type>
 CTECList<Type>::CTECList()
 {
 	this->size = 0;
 	this->head = nullptr;
 	this->end = nullptr;
+
+}
+
+template<class Type>
+CTECList<Type>::~CTECList()
+{
+
 }
 
 template<class Type>
@@ -30,14 +37,16 @@ Type CTECList<Type> :: removeFromEnd()
 {
 	/**
 	 * Check size is valid
-	 * create a return variable
-	 * loop until the next to last Node
-	 * grab the value from the last node
+	 * Create a return variable
+	 * loop until the next to last node
+	 * grab the value form the last node
 	 * delete the last node
 	 * set new last node as the end
 	 */
 	assert(size>0);
+
 	Type returnValue;
+
 	if(size == 1)
 	{
 		ArrayNode<Type> * toRemove = end;
@@ -57,8 +66,11 @@ Type CTECList<Type> :: removeFromEnd()
 		delete end;
 		current = end;
 		current->setNext(nullptr);
+
 	}
+
 	calculateSize();
+
 	return returnValue;
 }
 
@@ -66,11 +78,11 @@ template<class Type>
 Type CTECList<Type> :: removeFromIndex(int index)
 {
 	assert(this->size > 0);
+	assert(index >= 0);
+	assert(index < size);
 	assert(index >= 0 && index < size);
 
 	Type thingToRemove;
-
-	//Array<Type> * previous, deleteMe, newNext;
 
 	if(index == 0)
 	{
@@ -91,7 +103,7 @@ Type CTECList<Type> :: removeFromIndex(int index)
 }
 
 template<class Type>
-	void CTECList<Type> :: calculateSize()
+void CTECList<Type> :: calculateSize()
 	{
 		assert(size >= 0);
 
@@ -111,5 +123,57 @@ template<class Type>
 			}
 			size = count;
 		}
+
+	}
+template <class Type>
+int CTECList<Type> :: indexOf(Type searchValue)
+{
+    assert(this->size >0);
+
+    int index;
+
+    ArrayNode<Type> * searchPointer;
+
+    for(searchPointer = head; searchPointer != nullptr ;searchPointer = searchPointer->getNext())
+    {
+        if(searchValue == searchPointer->getValue())
+        {
+            return index;
+        }
+        index++;
+    }
+    index = -1;
+    return index;
 }
 
+template <class Type>
+void CTECList<Type> :: swap(int indexOne, int indexTwo)
+{
+    assert(indexOne < size  && indexTwo <size);
+
+    Type temp = getFromIndex(indexOne);
+    set(indexOne, getFromIndex(indexTwo));
+    set(indexTwo, temp);
+}
+
+template <class Type>
+void CTECList<Type> :: selectionSort()
+{
+    for(int outerLoop = 0; outerLoop < size -1; outerLoop++)
+    {
+        int selectedMinimum = outerLoop;
+
+        for(int innerLoop = outerLoop +1; innerLoop < size; innerLoop++)
+        {
+            if(getFromIndex(innerLoop) < getFromIndex(selectedMinimum))
+               {
+                   selectedMinimum = innerLoop;
+               }
+        }
+
+        if(selectedMinimum != outerLoop)
+        {
+            swap(selectedMinimum, outerLoop);
+        }
+    }
+}
