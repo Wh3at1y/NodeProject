@@ -10,18 +10,20 @@
 #include <iomanip>
 using namespace std;
 
-Timer::Timer() {
+Timer::Timer()
+{
 	executionTime = 0;
 }
 
-Timer::~Timer() {
+Timer::~Timer()
+{
 }
 void Timer::displayTimerInformation()
 {
 	cout << fixed;
 	cout << setprecision(8);
 	cout << executionTime << " (microseconds) for the code " << endl;
-	cout << "Which is " << float(executionTime)/CLOCKS_PER_SEC<<" seconds" << endl;
+	cout << "Which is " << float(executionTime) / CLOCKS_PER_SEC << " seconds" << endl;
 }
 void Timer::startTimer()
 {
@@ -41,5 +43,4 @@ long Timer::getExecutionTimeInMicroseconds()
 {
 	return executionTime;
 }
-
 

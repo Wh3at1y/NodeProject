@@ -15,9 +15,10 @@
 
 using namespace std;
 
-class NodeController {
-private:
-	CTECArray<int> * notHipsterInts;
+class NodeController
+{
+	private:
+		CTECArray<int> * notHipsterInts;
 
 		void testLists();
 		void searchLists();
@@ -31,10 +32,10 @@ private:
 		void doQuick();
 		void sortData();
 
-public:
-	NodeController();
-	virtual ~NodeController();
-	void start();
+	public:
+		NodeController();
+		virtual ~NodeController();
+		void start();
 };
 
 #endif /* CONTROLLER_NODECONTROLLER_H_ */

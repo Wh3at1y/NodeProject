@@ -17,7 +17,7 @@ CTECList<Type>::~CTECList()
 }
 
 template<class Type>
-Type CTECList<Type> :: removeFromFront()
+Type CTECList<Type>::removeFromFront()
 {
 	assert(this->size > 0);
 
@@ -33,7 +33,7 @@ Type CTECList<Type> :: removeFromFront()
 }
 
 template<class Type>
-Type CTECList<Type> :: removeFromEnd()
+Type CTECList<Type>::removeFromEnd()
 {
 	/**
 	 * Check size is valid
@@ -43,11 +43,11 @@ Type CTECList<Type> :: removeFromEnd()
 	 * delete the last node
 	 * set new last node as the end
 	 */
-	assert(size>0);
+	assert(size > 0);
 
 	Type returnValue;
 
-	if(size == 1)
+	if (size == 1)
 	{
 		ArrayNode<Type> * toRemove = end;
 		returnValue = removeFromFront();
@@ -58,7 +58,7 @@ Type CTECList<Type> :: removeFromEnd()
 	else
 	{
 		ArrayNode<Type> * current = head;
-		for(int index = 0; index < size - 1; index++)
+		for (int index = 0; index < size - 1; index++)
 		{
 			current = current->getNext();
 		}
@@ -75,7 +75,7 @@ Type CTECList<Type> :: removeFromEnd()
 }
 
 template<class Type>
-Type CTECList<Type> :: removeFromIndex(int index)
+Type CTECList<Type>::removeFromIndex(int index)
 {
 	assert(this->size > 0);
 	assert(index >= 0);
@@ -84,17 +84,17 @@ Type CTECList<Type> :: removeFromIndex(int index)
 
 	Type thingToRemove;
 
-	if(index == 0)
+	if (index == 0)
 	{
 		thingToRemove = removeFromFront();
 	}
-	else if(index == size-1)
+	else if (index == size - 1)
 	{
 		thingToRemove = removeFromEnd();
 	}
 	else
 	{
-		for(int spot =0; spot < index+1; spot++)
+		for (int spot = 0; spot < index + 1; spot++)
 		{
 
 		}
@@ -103,77 +103,77 @@ Type CTECList<Type> :: removeFromIndex(int index)
 }
 
 template<class Type>
-void CTECList<Type> :: calculateSize()
-	{
-		assert(size >= 0);
+void CTECList<Type>::calculateSize()
+{
+	assert(size >= 0);
 
-		int count = 0;
-		if(head == nullptr)
-		{
-			size = count;
-		}
-		else
+	int count = 0;
+	if (head == nullptr)
+	{
+		size = count;
+	}
+	else
+	{
+		count++;
+		ArrayNode<Type> * current = head;
+		while(current->getNext() !=nullptr)
 		{
 			count++;
-			ArrayNode<Type> * current = head;
-			while(current->getNext() !=nullptr)
+			current = current->getNext();
+		}
+		size = count;
+	}
+
+}
+template<class Type>
+int CTECList<Type>::indexOf(Type searchValue)
+{
+	assert(this->size > 0);
+
+	int index;
+
+	ArrayNode<Type> * searchPointer;
+
+	for (searchPointer = head; searchPointer != nullptr;searchPointer = searchPointer->getNext())
+	{
+		if(searchValue == searchPointer->getValue())
+		{
+			return index;
+		}
+		index++;
+	}
+	index = -1;
+	return index;
+}
+
+template<class Type>
+void CTECList<Type>::swap(int indexOne, int indexTwo)
+{
+	assert(indexOne < size && indexTwo < size);
+
+	Type temp = getFromIndex(indexOne);
+	set(indexOne, getFromIndex(indexTwo));
+	set(indexTwo, temp);
+}
+
+template<class Type>
+void CTECList<Type>::selectionSort()
+{
+	for (int outerLoop = 0; outerLoop < size - 1; outerLoop++)
+	{
+		int selectedMinimum = outerLoop;
+
+		for (int innerLoop = outerLoop + 1; innerLoop < size; innerLoop++)
+		{
+			if (getFromIndex(innerLoop) < getFromIndex(selectedMinimum))
 			{
-				count++;
-				current = current->getNext();
+				selectedMinimum = innerLoop;
 			}
-			size = count;
 		}
 
+		if (selectedMinimum != outerLoop)
+		{
+			swap(selectedMinimum, outerLoop);
+		}
 	}
-template <class Type>
-int CTECList<Type> :: indexOf(Type searchValue)
-{
-    assert(this->size >0);
-
-    int index;
-
-    ArrayNode<Type> * searchPointer;
-
-    for(searchPointer = head; searchPointer != nullptr ;searchPointer = searchPointer->getNext())
-    {
-        if(searchValue == searchPointer->getValue())
-        {
-            return index;
-        }
-        index++;
-    }
-    index = -1;
-    return index;
-}
-
-template <class Type>
-void CTECList<Type> :: swap(int indexOne, int indexTwo)
-{
-    assert(indexOne < size  && indexTwo <size);
-
-    Type temp = getFromIndex(indexOne);
-    set(indexOne, getFromIndex(indexTwo));
-    set(indexTwo, temp);
-}
-
-template <class Type>
-void CTECList<Type> :: selectionSort()
-{
-    for(int outerLoop = 0; outerLoop < size -1; outerLoop++)
-    {
-        int selectedMinimum = outerLoop;
-
-        for(int innerLoop = outerLoop +1; innerLoop < size; innerLoop++)
-        {
-            if(getFromIndex(innerLoop) < getFromIndex(selectedMinimum))
-               {
-                   selectedMinimum = innerLoop;
-               }
-        }
-
-        if(selectedMinimum != outerLoop)
-        {
-            swap(selectedMinimum, outerLoop);
-        }
-    }
 }

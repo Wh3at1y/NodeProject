@@ -9,17 +9,18 @@
 #define MODEL_TIMER_H_
 #include <time.h>
 
-class Timer {
-	clock_t executionTime;
+class Timer
+{
+		clock_t executionTime;
 
-public:
-	Timer();
-	virtual ~Timer();
-	void startTimer();
-	void stopTimer();
-	void resetTimer();
-	void displayTimerInformation();
-	long getExecutionTimeInMicroseconds();
+	public:
+		Timer();
+		virtual ~Timer();
+		void startTimer();
+		void stopTimer();
+		void resetTimer();
+		void displayTimerInformation();
+		long getExecutionTimeInMicroseconds();
 };
 
 #endif /* MODEL_TIMER_H_ */
